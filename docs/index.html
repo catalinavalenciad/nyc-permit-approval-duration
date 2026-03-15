@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NYC Construction Permit Approval Duration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #222;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<h1>NYC Construction Permit Approval Duration</h1>
+<p>
+This project builds a regression modeling pipeline to predict how long it takes
+for a construction permit to be approved by the NYC Department of Buildings.
+Data is pulled live from the NYC Open Data API and analyzed across five modeling
+approaches, from baseline OLS through regularization and tree-based methods.
+</p>
+<h2>Business Context</h2>
+<p>
+Permit approval timelines are a core uncertainty in construction project planning.
+This analysis examines whether publicly available permit metadata — job type, work type,
+borough, and building classification — can reliably predict approval duration,
+and surfaces the limitations of the available features for that task.
+</p>
+<h2>Dataset</h2>
+<ul>
+  <li>NYC Department of Buildings — Permit Issuance</li>
+  <li><a href="https://data.cityofnewyork.us/Housing-Development/DOB-Permit-Issuance/ipu4-2q9a">NYC Open Data (Dataset ID: ipu4-2q9a)</a></li>
+  <li>100,000 records pulled via Socrata API</li>
+  <li>Response variable: approval duration (days from filing to issuance)</li>
+  <li>30 encoded predictors after feature engineering</li>
+</ul>
+<h2>Methods</h2>
+<ul>
+  <li>API data acquisition via sodapy</li>
+  <li>Feature engineering: date parsing, approval duration computation, categorical encoding</li>
+  <li>Baseline OLS regression with coefficient interpretation</li>
+  <li>Regularization models: Ridge, Lasso, and Elastic Net with cross-validated alpha selection</li>
+  <li>Tree-based model: Random Forest with feature importance analysis</li>
+</ul>
+<h2>Final Results</h2>
+<ul>
+  <li><strong>Baseline OLS</strong>: RMSE = 51.95 | R² = 0.0054</li>
+  <li><strong>Ridge</strong>: RMSE = 51.94 | R² = 0.0060</li>
+  <li><strong>Lasso</strong>: RMSE = 51.90 | R² = 0.0075</li>
+  <li><strong>Elastic Net</strong>: RMSE = 51.90 | R² = 0.0073</li>
+  <li><strong>Random Forest</strong>: RMSE = 52.70 | R² = −0.0234</li>
+  <li><strong>Selected model:</strong> Lasso (best R², 12 of 30 predictors retained)</li>
+</ul>
+<h2>Analysis Outputs</h2>
+<ul>
+  <li><a href="01_data_acquisition_and_overview.html">Data Acquisition and Overview</a></li>
+  <li><a href="02_feature_engineering_and_cleaning.html">Feature Engineering and Cleaning</a></li>
+  <li><a href="03_baseline_regression.html">Baseline Regression</a></li>
+  <li><a href="04_regularization_models.html">Regularization Models</a></li>
+  <li><a href="05_tree_based_models.html">Tree-Based Models</a></li>
+  <li><a href="06_model_synthesis_and_conclusions.html">Model Synthesis and Conclusions</a></li>
+</ul>
+<h2>Source Code & Documentation</h2>
+<p>
+Full methodology, Python code, and reproducibility details are available in the
+<a href="https://github.com/YOUR-USERNAME/nyc-permit-approval-duration">
+GitHub repository
+</a>.
+</p>
+<hr>
+<p>
+<strong>Author:</strong> Catalina Valencia<br>
+<a href="https://www.linkedin.com/in/catalina-valencia/">LinkedIn</a>
+</p>
+
+</body>
+</html>
